@@ -6,63 +6,8 @@ import FeaturesSection from "../components/landing/FeaturesSection";
 import BenefitsSection from "../components/landing/BenefitsSection";
 import TestimonialsSection from "../components/landing/TestimonialsSection";
 import CTASection from "../components/landing/CTASection";
-import LoadingOverlay from "../components/landing/LoadingOverlay";
 
 export default function Home() {
-  const [isTracking, setIsTracking] = useState(false);
-  const [trackingCode, setTrackingCode] = useState(null);
-  const [isRedirecting, setIsRedirecting] = useState(false);
-
-  const handleAffiliateTracking = useCallback(async () => {
-    try {
-      // Parse URL parameters
-      const urlParams = new URLSearchParams(window.location.search);
-      const refCode = urlParams.get('ref__');
-      
-      if (refCode) {
-        setIsTracking(true);
-        setTrackingCode(refCode);
-        
-        // Store referral in localStorage
-        localStorage.setItem('jv8_referral_id', refCode);
-        localStorage.setItem('jv8_referral_timestamp', new Date().toISOString());
-        
-        // Log the click
-        await logAffiliateClick(refCode);
-        
-        // Clean up URL
-        window.history.replaceState({}, document.title, window.location.pathname);
-        
-        // Set redirect timer
-        setTimeout(() => {
-          setIsRedirecting(true);
-          window.location.href = `https://jv8.co/#/Welcome?referrer=${refCode}`;
-        }, 3000);
-      }
-    } catch (error) {
-      console.error('Error handling affiliate tracking:', error);
-      setIsTracking(false);
-    }
-  }, []);
-
-  const logAffiliateClick = async (trackingCode) => {
-    try {
-      await AffiliateClick.create({
-        tracking_code: trackingCode,
-        timestamp: new Date().toISOString(),
-        user_agent: navigator.userAgent,
-        referrer: document.referrer || 'direct',
-        page_url: window.location.href,
-        ip_address: null // Will be populated by server if needed
-      });
-    } catch (error) {
-      console.error('Error logging affiliate click:', error);
-    }
-  };
-
-  useEffect(() => {
-    handleAffiliateTracking();
-  }, [handleAffiliateTracking]);
 
   const handleCTAClick = () => {
     const referralId = localStorage.getItem('jv8_referral_id');
@@ -75,12 +20,6 @@ export default function Home() {
 
   return (
     <>
-      {(isTracking || isRedirecting) && (
-        <LoadingOverlay 
-          isRedirecting={isRedirecting}
-          trackingCode={trackingCode}
-        />
-      )}
       
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-indigo-50 to-purple-50">
         {/* Navigation */}
