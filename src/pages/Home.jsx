@@ -65,7 +65,7 @@ export default function Home() {
                 <span className="text-lg font-semibold">JV8</span>
               </div>
               <p className="text-slate-400 text-center md:text-right">
-                © 2024 JV8. All rights reserved. | 
+                © 2025 JV8. All rights reserved. | 
                 <span className="ml-2">AI-Powered Business Networking</span>
               </p>
             </div>
