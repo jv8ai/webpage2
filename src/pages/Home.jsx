@@ -45,9 +45,9 @@ export default function Home() {
 
         {/* Main Content */}
         <main className="pt-16">
-          <HeroSection onCTAClick={handleCTAClick} />
-          <FeaturesSection />
-          <BenefitsSection />
+         {/* <HeroSection onCTAClick={handleCTAClick} /> */}
+         {/* <FeaturesSection /> */}
+        {/*  <BenefitsSection /> */}
           {/* <TestimonialsSection /> */}
           {/* <CTASection onCTAClick={handleCTAClick} /> */}
         </main>
