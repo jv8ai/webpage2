@@ -48,8 +48,8 @@ export default function Home() {
           <HeroSection onCTAClick={handleCTAClick} />
           <FeaturesSection />
           <BenefitsSection />
-          <TestimonialsSection />
-          <CTASection onCTAClick={handleCTAClick} />
+          {/* <TestimonialsSection /> */}
+          {/* <CTASection onCTAClick={handleCTAClick} /> */}
         </main>
 
         {/* Footer */}
