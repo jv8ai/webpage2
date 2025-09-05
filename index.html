@@ -1,55 +1,10 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="https://base44.com/logo_v2.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JV8 AI Powered Networking</title>
-    
-    <!-- Add your affiliate tracking script here -->
-      <script>
-        (async function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const trackingCode = urlParams.get('ref');
-
-            if (trackingCode) {
-                console.log('Affiliate reference found:', trackingCode);
-                try {
-                    const response = await fetch('https://preview--jv8-affiliate-652ca0ee.base44.app/api/functions/trackAffiliateClick', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            trackingCode: trackingCode,
-                            userAgent: navigator.userAgent,
-                            referrer: document.referrer
-                        })
-                    });
-
-                    if (response.ok) {
-                        const data = await response.json();
-                        if (data.success && data.affiliateId) {
-                            localStorage.setItem('jv8_referral_id', data.affiliateId);
-                            console.log('Referral ID stored:', data.affiliateId);
-                        }
-                    } else {
-                        console.error('Failed to track affiliate click. Status:', response.status);
-                    }
-                } catch (error) {
-                    console.error('Error during affiliate tracking API call:', error);
-                } finally {
-                    if (window.history.replaceState) {
-                       const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
-                       window.history.replaceState({ path: cleanUrl }, '', cleanUrl);
-                    }
-                }
-            }
-        })();
-    </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test</title>
+</head>
+<body>
+    <h1>Basic Test Page</h1>
+    <p>If text still appears below this, it's external.</p>
+</body>
 </html>
